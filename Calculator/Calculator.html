@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container mt-5">
+    	<h1>Calculator</h1>
+			<form>
+			<div class="form-group">
+				<input type="text" class="form-control" id="result" placeholder="Result" disabled>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(7)">7</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(8)">8</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(9)">9</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-primary btn-block" onclick="addInput('+')">+</button>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(4)">4</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(5)">5</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(6)">6</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-primary btn-block" onclick="addInput('-')">-</button>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(1)">1</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(2)">2</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(3)">3</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-primary btn-block" onclick="addInput('*')">*</button>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput(0)">0</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-secondary btn-block" onclick="addInput('.')">.</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-primary btn-block" onclick="calculate()">=</button>
+				</div>
+				<div class="form-group col-md-3">
+					<button type="button" class="btn btn-primary btn-block" onclick="addInput('/')">/</button>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-secondary btn-block" onclick="clearInput()">Clear</button>
+			</div>
+			<script>
+				let inputString = '';
+
+				function addInput(value) {
+					inputString += value;
+					document.getElementById('result').value = inputString;
+				}
+
+				function clearInput() {
+					inputString = '';
+					document.getElementById('result').value = '';
+				}
+
+				function calculate() {
+					try {
+						const result = eval(inputString);
+						inputString = result.toString();
+						document.getElementById('result').value = inputString;
+					} catch (error) {
+						console.error(error);
+					}
+				}
+			</script>
+	 	</form>
+	</div>
+</body>
+</html>
